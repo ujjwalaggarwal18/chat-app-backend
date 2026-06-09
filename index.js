@@ -12,12 +12,14 @@ const app = express()
 const server = http.createServer(app)
 const io = new Server(server, {
     cors: {
-        origin: '*',
+        origin: 'https://chat-app-frontend-beta-neon.vercel.app',
         methods: ['GET', 'POST']
     }
 })
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://chat-app-frontend-beta-neon.vercel.app'
+}))
 app.use(express.json())
 
 mongoose.connect(process.env.MONGO_URI)
